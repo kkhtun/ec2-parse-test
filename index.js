@@ -12,8 +12,12 @@ app.use(express.json());
 
 const cache = new SimpleCache(callSecretManagerTest);
 app.get("/test", async (req, res) => {
-  const data = await cache.get(req.query);
-  return res.status(200).send(data);
+  try {
+    const data = await cache.get(req.query);
+    return res.status(200).send(data);
+  } catch (error) {
+    return res.status(500).send(error);
+  }
 });
 
 const PORT = 3000;
