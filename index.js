@@ -20,6 +20,10 @@ app.get("/test", async (req, res) => {
   }
 });
 
+app.get("/hello", (req, res) => {
+  return res.status(200).send({ message: "Hello World" });
+});
+
 const PORT = 3000;
 app.listen(PORT, () => {
   console.log("Server is listening at PORT", PORT);
