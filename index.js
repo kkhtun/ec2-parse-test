@@ -13,7 +13,7 @@ app.use(express.json());
 const cache = new SimpleCache(callSecretManagerTest);
 app.get("/test", async (req, res) => {
   try {
-    const data = await cache.get(req.query);
+    const data = await cache.get(req.query.key);
     return res.status(200).send(data);
   } catch (error) {
     return res.status(500).send(error);
